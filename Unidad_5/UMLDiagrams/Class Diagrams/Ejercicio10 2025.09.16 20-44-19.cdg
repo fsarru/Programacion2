@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Ejercicio10">
+  <ClassDiagramComponents>
+    <Class name="ClaveSeguridad" package="ejercicio10" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="codigo" type="String" visibility="private"/>
+        <Field name="ultimaModificacion" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="codigo"/>
+          <Argument type="String" name="ultimaModificacion"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCodigo" returnType="String" visibility="public"/>
+        <Method name="getUltimaModificacion" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="CuentaBancaria" package="ejercicio10" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="cbu" type="String" visibility="private"/>
+        <Field name="saldo" type="double" visibility="private"/>
+        <Field name="claveSeguridad" type="ClaveSeguridad" visibility="private"/>
+        <Field name="titular" type="Titular" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="cbu"/>
+          <Argument type="double" name="saldo"/>
+          <Argument type="String" name="codigoClave"/>
+          <Argument type="String" name="fechaModificacion"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setTitular" returnType="void" visibility="public">
+          <Argument type="Titular" name="titular"/>
+        </Method>
+        <Method name="getCbu" returnType="String" visibility="public"/>
+        <Method name="getSaldo" returnType="double" visibility="public"/>
+        <Method name="getClaveSeguridad" returnType="ClaveSeguridad" visibility="public"/>
+        <Method name="getTitular" returnType="Titular" visibility="public"/>
+        <Method name="mostrarDatos" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Ejercicio10" package="ejercicio10" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Titular" package="ejercicio10" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="dni" type="int" visibility="private"/>
+        <Field name="cuentaBancaria" type="CuentaBancaria" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="int" name="dni"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="getDni" returnType="int" visibility="public"/>
+        <Method name="setCuentaBancaria" returnType="void" visibility="public">
+          <Argument type="CuentaBancaria" name="cuentaBancaria"/>
+        </Method>
+        <Method name="mostrarDatos" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="titular" source="ejercicio10.CuentaBancaria" target="ejercicio10.Titular" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="cuentaBancaria" source="ejercicio10.Titular" target="ejercicio10.CuentaBancaria" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="ejercicio10.CuentaBancaria" target="ejercicio10.ClaveSeguridad" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="ejercicio10.CuentaBancaria" target="ejercicio10.Titular" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="claveSeguridad" source="ejercicio10.CuentaBancaria" target="ejercicio10.ClaveSeguridad" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="ejercicio10.Titular" target="ejercicio10.CuentaBancaria" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
